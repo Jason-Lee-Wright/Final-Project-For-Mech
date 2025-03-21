@@ -19,7 +19,6 @@ public class MainMenu : MonoBehaviour
 
     void Start()
     {
-        UpdateLevelText();
         GameScreen.SetActive(false);
         game.SetActive(false);
         MenuScreen.SetActive(true);
@@ -27,59 +26,27 @@ public class MainMenu : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             downChime.Play();
         }
-        if (Input.GetKeyUp(KeyCode.RightArrow) || Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.Space))
+        if (Input.GetKeyUp(KeyCode.Space))
         {
             upChime.Play();
         }
 
-        if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            //Make play chime audio
-            ChangeLevel(1);
-        }
-        else if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            //Make play chime audio
-            ChangeLevel(-1);
-        }
-        else if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             //Make play chime audio
             StartGame();
         }
     }
 
-    void ChangeLevel(int change)
-    {
-        currentLevelIndex += change;
-        if (currentLevelIndex >= levels.Length) currentLevelIndex = levels.Length - 1;
-        if (currentLevelIndex < 0) currentLevelIndex = 0;
-        UpdateLevelText();
-    }
-
-    void UpdateLevelText()
-    {
-        levelText.text = "Selected Level: " + levels[currentLevelIndex] + "\n" + levelInfo[currentLevelIndex];
-
-        // Later use currentLevelIndex to change text to be more specific
-    }
-
     void StartGame()
     {
         game.SetActive(true);
 
-        GamemodeInt.GameSetter?.Invoke(currentLevelIndex);
-
         MenuScreen.SetActive(false);
         GameScreen.SetActive(true);
     }
-}
-
-public static class GamemodeInt
-{
-    public static Action<int> GameSetter;
 }

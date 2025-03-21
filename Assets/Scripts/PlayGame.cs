@@ -31,18 +31,6 @@ public class GameController : MonoBehaviour
 
     public MainMenu mainMenu;
 
-    void OnEnable()
-    {
-        // Subscribe to the delegate
-        GamemodeInt.GameSetter += SetGameMode;
-    }
-
-    void OnDisable()
-    {
-        // Unsubscribe to avoid memory leaks
-        GamemodeInt.GameSetter -= SetGameMode;
-    }
-
     void SetGameMode(int levelIndex)
     {
         switch (levelIndex)
