@@ -10,18 +10,15 @@ public class MainMenu : MonoBehaviour
     public TextMeshProUGUI levelText; // UI Text to display the selected level
     public AudioSource downChime, upChime;
 
-    private string[] levels = { "Level 1", "Level2", "Level3", "Level4" }; // Each level in order
-    private string[] levelInfo = { "The sock Puppet is dying. You should stop that. Lucky for you there are random drugs everywhere... \nthats the perfect thing to feed it!",
-                                   "These pills are just allergies??? \nThat should work!!",
-                                   "Drugs AND allergies....... \nWHAT A GOOD IDEA!!!!!",
-                                   "These are just regular medicine.... \nfine I guess this can work.."};
-    public int currentLevelIndex = 0;
+    [TextArea] public string levelInfo;
 
     void Start()
     {
         GameScreen.SetActive(false);
         game.SetActive(false);
         MenuScreen.SetActive(true);
+
+        levelText.text = levelInfo;
     }
 
     void Update()
