@@ -13,18 +13,29 @@ public class GameController : MonoBehaviour
     public List<string> foodNames;
 
     public float gameTime = 60f;
-    private float currentTime;
+    internal float currentTime;
     private bool isGameOver;
     private int score = 0, GoodINT = 0, BadINT = 0; // Score INTS
     private int GoodPassed = 0, BadPassed = 0; //To mark passed food of each type.
     private string currentFoodName;
 
-    void Awake()
+    public void ResetGame()
     {
+        score = 0;
+        GoodINT = 0;
+        BadINT = 0;
+
+        GoodPassed = 0;
+        BadPassed = 0;
+
+        currentTime = gameTime;
+
         currentTime = gameTime;
         UpdateScoreText();
         SelectNewFood();
         GameOverScreen.SetActive(false);
+
+        isGameOver = false;
     }
 
     void Update()
@@ -42,10 +53,12 @@ public class GameController : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.LeftArrow)) // Eat
             {
                 EatFood();
+                eatSound.Play();
             }
             else if (Input.GetKeyDown(KeyCode.RightArrow)) // Skip
             {
                 SkipFood();
+                moveSound.Play();
             }
         }
     }

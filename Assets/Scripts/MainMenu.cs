@@ -8,7 +8,8 @@ public class MainMenu : MonoBehaviour
     public GameObject MenuScreen, GameScreen, game;
 
     public TextMeshProUGUI levelText; // UI Text to display the selected level
-    public AudioSource downChime, upChime;
+
+    public GameController gameController;
 
     [TextArea] public string levelInfo;
 
@@ -25,16 +26,6 @@ public class MainMenu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            downChime.Play();
-        }
-        if (Input.GetKeyUp(KeyCode.Space))
-        {
-            upChime.Play();
-        }
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            //Make play chime audio
             StartGame();
         }
     }
@@ -42,6 +33,8 @@ public class MainMenu : MonoBehaviour
     void StartGame()
     {
         game.SetActive(true);
+
+        gameController.ResetGame();
 
         MenuScreen.SetActive(false);
         GameScreen.SetActive(true);
