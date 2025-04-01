@@ -18,6 +18,8 @@ public class GameController : MonoBehaviour
     private int score = 0, GoodINT = 0, BadINT = 0; // Score INTS
     private int GoodPassed = 0, BadPassed = 0; //To mark passed food of each type.
     private string currentFoodName;
+    private int LastFood = -1;
+    private int index = 0;
 
     public void ResetGame()
     {
@@ -67,7 +69,11 @@ public class GameController : MonoBehaviour
     {
         if (foodSprites.Count > 0 && foodNames.Count > 0)
         {
-            int index = Random.Range(0, foodSprites.Count);
+            while (LastFood == index)
+            {
+                index = Random.Range(0, foodSprites.Count);
+            }
+            LastFood = index;
             foodImage.sprite = foodSprites[index];
             currentFoodName = foodNames[index];
         }
