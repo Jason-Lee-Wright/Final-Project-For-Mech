@@ -28,6 +28,11 @@ public class MainMenu : MonoBehaviour
         {
             StartGame();
         }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            QuitGameXX();
+        }
     }
 
     void StartGame()
@@ -38,5 +43,10 @@ public class MainMenu : MonoBehaviour
 
         MenuScreen.SetActive(false);
         GameScreen.SetActive(true);
+    }
+
+    void QuitGameXX()
+    {
+        Application.Quit();
     }
 }
