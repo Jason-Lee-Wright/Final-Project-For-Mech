@@ -2598,10 +2598,9 @@ MonoBehaviour:
   game: {fileID: 1861266523}
   levelText: {fileID: 289085709}
   gameController: {fileID: 1861266525}
-  levelInfo: "You now Can't stand to eat any animal products Avoid them at all costs.
-    \n\nEating food not made with animal products increases your score, but eating
-    animal products reduces it. \n\nIf you toss animal products points are gained,
-    and discarding non animal products will lover it again."
+  levelInfo: "You now can't stand to eat any animal products. Avoid them at all costs.
+    \n\nEating animal products Lowers your score in the end.\n\nNot eating them Raises
+    it.\n\n(The opposite it true for non animal products)"
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
